@@ -15,6 +15,10 @@
             <ul>
                 {{this.id}}
                 {{this.burger_name}}
+                <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
+                    <input type="hidden" name="devoured" value="true">
+                    <button class="btn-primary" type="submit">Devour It!</button>
+                </form>
             </ul>
             {{/unless}}
             {{/each}}

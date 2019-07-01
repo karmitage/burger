@@ -1,8 +1,7 @@
 var express = require("express");
-
 var PORT = process.env.PORT || 8080;
-
 var app = express();
+var methodOverride = require("method-override");
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static("public"));
@@ -10,6 +9,8 @@ app.use(express.static("public"));
 // Parsing middleware (parses json objects and url encoded data)
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+
+app.use(methodOverride("_method"));
 
 // Require handlebars
 var exphbs = require("express-handlebars");
