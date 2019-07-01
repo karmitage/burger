@@ -1,5 +1,6 @@
-var express = require("express");
 
+//require express and create router variable
+var express = require("express");
 var router = express.Router();
 
 // Import the model 
@@ -16,24 +17,24 @@ router.get("/", function (req, res) {
     });
 });
 
-router.post("/api/burgers", function (req, res) {
+router.post("/burgers", function (req, res) {
     burger.insertOne([
-        "burger_name", "description"
+        "burger_name"
     ], [
-            req.body.burger_name, req.body.description
+            req.body.burger_name,
         ], function (result) {
             // Send back the ID of the new burger
             res.json({ id: result.insertId });
         });
 });
 
-router.put("/api/burgers/:id", function (req, res) {
+router.put("/burgers/:id", function (req, res) {
     var condition = "id = " + req.params.id;
 
     console.log("condition", condition);
 
     burger.updateOne({
-        description: req.body.description
+        devoured: true
     }, condition, function (result) {
         if (result.changedRows == 0) {
             // If no rows were changed, then the ID must not exist, so 404
