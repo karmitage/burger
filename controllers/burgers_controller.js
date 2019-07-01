@@ -23,8 +23,7 @@ router.post("/burgers", function (req, res) {
     ], [
             req.body.burger_name,
         ], function (result) {
-            // Send back the ID of the new burger
-            res.json({ id: result.insertId });
+            res.redirect('/');
         });
 });
 
@@ -40,7 +39,7 @@ router.put("/burgers/:id", function (req, res) {
             // If no rows were changed, then the ID must not exist, so 404
             return res.status(404).end();
         } else {
-            res.status(200).end();
+            res.redirect('/');
         }
     });
 });
