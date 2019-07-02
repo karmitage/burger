@@ -4,7 +4,7 @@ var app = express();
 var methodOverride = require("method-override");
 
 // Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static("public"));
+app.use(express.static(__dirname + '/public'));
 
 // Parsing middleware (parses json objects and url encoded data)
 app.use(express.urlencoded({ extended: true }));

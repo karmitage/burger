@@ -2,9 +2,12 @@
 
     <div class="row">
         <div class="center col-sm-12">
-            <img src="image" alt="burger img">
-            <h1>Eat Da Burger</h1>
+            <img src="/assets/img/burger.png" alt="burger img" id="burgerImage">
         </div>
+    </div>
+
+    <div class="row">
+        <h1>Eat Da Burger</h1>
     </div>
 
     <div class="row">
@@ -13,11 +16,10 @@
             {{#each burgers}}
             {{#unless this.devoured}}
             <ul>
-                {{this.id}}
                 {{this.burger_name}}
                 <form action="/burgers/{{this.id}}?_method=PUT" method="POST">
-                    <input type="hidden" name="devoured" value="true">
-                    <button class="btn-primary" type="submit">Devour It!</button>
+                    <input type="hidden" name="devoured" value="true" id="devourit">
+                    <button class="btn-primary" type="submit" id="eatBurger">Devour It!</button>
                 </form>
             </ul>
             {{/unless}}
@@ -29,7 +31,6 @@
             {{#each burgers}}
             {{#if this.devoured}}
             <ul>
-                {{this.id}}
                 {{this.burger_name}}
             </ul>
             {{/if}}
@@ -43,7 +44,7 @@
             <h2>Add a Burger</h2>
             <form action="/burgers" method="POST">
                 <input type="text" id="name" name="burger_name" placeholder="New burger goes here">
-                <button type="submit">Add Burger</button>
+                <button type="submit" id="addBurger">Add Burger</button>
             </form>
         </div>
 
